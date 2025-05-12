@@ -15,7 +15,7 @@ MASMainApplicationSpace class >> open [
 { #category : 'instance creation' }
 MASMainApplicationSpace >> open [
 
-| main pane header content themeSwap |
+| main pane header content "themeSwap" |
 pane := ToPane new.
 pane layout: BlLinearLayout vertical.
 pane layout cellSpacing: 15.
@@ -26,14 +26,14 @@ pane border: (BlBorder paint: Color lightGray).
 pane constraints horizontal matchParent.
 pane constraints vertical matchParent.
 
-themeSwap := ToCheckbox new labelText: 'Dark Theme'; beEndToStart.
+"themeSwap := ToCheckbox new labelText: 'Dark Theme'; beEndToStart.
 themeSwap defaultSkin: ToCheckboxSkin new.
 themeSwap addEventHandler: (BlEventHandler on: ToCheckableChangedEvent 
 														do: [ :event | 
 															pane toTheme: (themeSwap isChecked 
 																ifTrue: [ ToThemePersoTinyBlogDark new ]
 																ifFalse: [ ToThemePersoTinyBlogDefault new ]) ]).
-pane addChild: themeSwap.
+pane addChild: themeSwap."
 
 header := MASHeaderToplo new createHeader.
 pane addChild: header.
